@@ -11,67 +11,73 @@ SSH-deploys the new version on EC2
 
 Restarts the application using docker-compose
 
-📂 Project Structure
+## 📂 Project Structure
+
+```
 ├── backend
-│   ├── Dockerfile
-│   ├── app
-│   │   ├── config
-│   │   │   └── db.config.js
-│   │   ├── controllers
-│   │   │   └── tutorial.controller.js
-│   │   ├── models
-│   │   │   ├── index.js
-│   │   │   └── tutorial.model.js
-│   │   └── routes
-│   │       └── turorial.routes.js
-│   ├── package.json
-│   └── server.js
+│   ├── Dockerfile
+│   ├── app
+│   │   ├── config
+│   │   │   └── db.config.js
+│   │   ├── controllers
+│   │   │   └── tutorial.controller.js
+│   │   ├── models
+│   │   │   ├── index.js
+│   │   │   └── tutorial.model.js
+│   │   └── routes
+│   │       └── turorial.routes.js
+│   ├── package.json
+│   └── server.js
+│
 ├── docker-compose.yml
+│
 ├── frontend
-│   ├── Dockerfile
-│   ├── angular.json
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── src
-│   │   ├── app
-│   │   │   ├── app-routing.module.ts
-│   │   │   ├── app.component.css
-│   │   │   ├── app.component.html
-│   │   │   ├── app.component.spec.ts
-│   │   │   ├── app.component.ts
-│   │   │   ├── app.module.ts
-│   │   │   ├── components
-│   │   │   │   ├── add-tutorial
-│   │   │   │   │   ├── add-tutorial.component.css
-│   │   │   │   │   ├── add-tutorial.component.html
-│   │   │   │   │   ├── add-tutorial.component.spec.ts
-│   │   │   │   │   └── add-tutorial.component.ts
-│   │   │   │   ├── tutorial-details
-│   │   │   │   │   ├── tutorial-details.component.css
-│   │   │   │   │   ├── tutorial-details.component.html
-│   │   │   │   │   ├── tutorial-details.component.spec.ts
-│   │   │   │   │   └── tutorial-details.component.ts
-│   │   │   │   └── tutorials-list
-│   │   │   │       ├── tutorials-list.component.css
-│   │   │   │       ├── tutorials-list.component.html
-│   │   │   │       ├── tutorials-list.component.spec.ts
-│   │   │   │       └── tutorials-list.component.ts
-│   │   │   ├── models
-│   │   │   │   ├── tutorial.model.spec.ts
-│   │   │   │   └── tutorial.model.ts
-│   │   │   └── services
-│   │   │       ├── tutorial.service.spec.ts
-│   │   │       └── tutorial.service.ts
-│   │   ├── assets
-│   │   ├── favicon.ico
-│   │   ├── index.html
-│   │   ├── main.ts
-│   │   └── styles.css
-│   ├── tsconfig.app.json
-│   ├── tsconfig.json
-│   └── tsconfig.spec.json
+│   ├── Dockerfile
+│   ├── angular.json
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── src
+│   │   ├── app
+│   │   │   ├── app-routing.module.ts
+│   │   │   ├── app.component.css
+│   │   │   ├── app.component.html
+│   │   │   ├── app.component.spec.ts
+│   │   │   ├── app.component.ts
+│   │   │   ├── app.module.ts
+│   │   │   ├── components
+│   │   │   │   ├── add-tutorial
+│   │   │   │   │   ├── add-tutorial.component.css
+│   │   │   │   │   ├── add-tutorial.component.html
+│   │   │   │   │   ├── add-tutorial.component.spec.ts
+│   │   │   │   │   └── add-tutorial.component.ts
+│   │   │   │   ├── tutorial-details
+│   │   │   │   │   ├── tutorial-details.component.css
+│   │   │   │   │   ├── tutorial-details.component.html
+│   │   │   │   │   ├── tutorial-details.component.spec.ts
+│   │   │   │   │   └── tutorial-details.component.ts
+│   │   │   │   └── tutorials-list
+│   │   │   │       ├── tutorials-list.component.css
+│   │   │   │       ├── tutorials-list.component.html
+│   │   │   │       ├── tutorials-list.component.spec.ts
+│   │   │   │       └── tutorials-list.component.ts
+│   │   │   ├── models
+│   │   │   │   ├── tutorial.model.spec.ts
+│   │   │   │   └── tutorial.model.ts
+│   │   │   └── services
+│   │   │       ├── tutorial.service.spec.ts
+│   │   │       └── tutorial.service.ts
+│   │   ├── assets
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── main.ts
+│   │   └── styles.css
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   └── tsconfig.spec.json
+│
 └── nginx
     └── default.conf
+```
 
     
 🖥️ Application Overview
