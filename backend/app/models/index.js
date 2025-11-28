@@ -1,17 +1,12 @@
-const mongoose = require("mongoose");
+const dbConfig = require("../config/db.config.js");
 
-// Use native Promises
+const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 
-// Build DB object
 const db = {};
-
 db.mongoose = mongoose;
-db.url = process.env.MONGODB_URI || "mongodb://mongo:27017/tutorials_db";
-
-// Load models
+db.url = dbConfig.url;
 db.tutorials = require("./tutorial.model.js")(mongoose);
 
-// Export single db object
 module.exports = db;
 
