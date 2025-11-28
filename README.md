@@ -1,27 +1,137 @@
-In this DevOps task, you need to build and deploy a full-stack CRUD application using the MEAN stack (MongoDB, Express, Angular 15, and Node.js). The backend will be developed with Node.js and Express to provide REST APIs, connecting to a MongoDB database. The frontend will be an Angular application utilizing HTTPClient for communication.  
+🚀 CRUD MEAN Stack Application — Dockerized + CI/CD + AWS Deployment
 
-The application will manage a collection of tutorials, where each tutorial includes an ID, title, description, and published status. Users will be able to create, retrieve, update, and delete tutorials. Additionally, a search box will allow users to find tutorials by title.
+This project is a Dockerized full-stack MEAN application (MongoDB, Express.js, Angular, Node.js) deployed on an AWS EC2 instance, using Docker Compose, Nginx Reverse Proxy, and GitHub Actions CI/CD.
+Whenever changes are pushed to the main branch, GitHub Actions:
 
-## Project setup
+Builds updated frontend and backend Docker images
 
-### Node.js Server
+Pushes them to Docker Hub
 
-cd backend
+SSH-deploys the new version on EC2
 
-npm install
+Restarts the application using docker-compose
 
-You can update the MongoDB credentials by modifying the `db.config.js` file located in `app/config/`.
+📂 Project Structure
+├── backend
+│   ├── Dockerfile
+│   ├── app
+│   │   ├── config
+│   │   │   └── db.config.js
+│   │   ├── controllers
+│   │   │   └── tutorial.controller.js
+│   │   ├── models
+│   │   │   ├── index.js
+│   │   │   └── tutorial.model.js
+│   │   └── routes
+│   │       └── turorial.routes.js
+│   ├── package.json
+│   └── server.js
+├── docker-compose.yml
+├── frontend
+│   ├── Dockerfile
+│   ├── angular.json
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── src
+│   │   ├── app
+│   │   │   ├── app-routing.module.ts
+│   │   │   ├── app.component.css
+│   │   │   ├── app.component.html
+│   │   │   ├── app.component.spec.ts
+│   │   │   ├── app.component.ts
+│   │   │   ├── app.module.ts
+│   │   │   ├── components
+│   │   │   │   ├── add-tutorial
+│   │   │   │   │   ├── add-tutorial.component.css
+│   │   │   │   │   ├── add-tutorial.component.html
+│   │   │   │   │   ├── add-tutorial.component.spec.ts
+│   │   │   │   │   └── add-tutorial.component.ts
+│   │   │   │   ├── tutorial-details
+│   │   │   │   │   ├── tutorial-details.component.css
+│   │   │   │   │   ├── tutorial-details.component.html
+│   │   │   │   │   ├── tutorial-details.component.spec.ts
+│   │   │   │   │   └── tutorial-details.component.ts
+│   │   │   │   └── tutorials-list
+│   │   │   │       ├── tutorials-list.component.css
+│   │   │   │       ├── tutorials-list.component.html
+│   │   │   │       ├── tutorials-list.component.spec.ts
+│   │   │   │       └── tutorials-list.component.ts
+│   │   │   ├── models
+│   │   │   │   ├── tutorial.model.spec.ts
+│   │   │   │   └── tutorial.model.ts
+│   │   │   └── services
+│   │   │       ├── tutorial.service.spec.ts
+│   │   │       └── tutorial.service.ts
+│   │   ├── assets
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── main.ts
+│   │   └── styles.css
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   └── tsconfig.spec.json
+└── nginx
+    └── default.conf
 
-Run `node server.js`
+    
+🖥️ Application Overview
+✔ Frontend
 
-### Angular Client
+Angular application served using Nginx inside a Docker container.
 
-cd frontend
+✔ Backend
 
-npm install
+Node.js + Express REST API connected to MongoDB.
 
-Run `ng serve --port 8081`
+✔ Database
 
-You can modify the `src/app/services/tutorial.service.ts` file to adjust how the frontend interacts with the backend.
+MongoDB running as its own Docker container (mongo:6).
 
-Navigate to `http://localhost:8081/`
+✔ Reverse Proxy
+
+A separate Nginx container routes:
+
+/ → Angular frontend
+
+/api/ → Node backend
+
+✔ Deployment
+
+Docker Compose orchestrates all containers on an AWS EC2 instance.
+
+🚀 CI/CD Using GitHub Actions
+
+Whenever a commit is pushed to main, GitHub Actions:
+
+Builds backend & frontend Docker images
+
+Tags them with latest and with the Git commit SHA
+
+Pushes both images to Docker Hub
+
+SSHs into EC2
+
+Pulls the newest images
+
+Restarts containers with docker-compose
+
+🌐 Production Deployment Steps (EC2)
+
+Launch EC2 Instance (Amazon Linux / Ubuntu)
+
+Install Docker + Docker Compose
+
+Clone the repository:
+git clone https://github.com/<username>/crud-dd-task-mean-app
+
+Run:
+docker compose up --build -d
+
+🧰 GitHub Secrets Required
+| Secret Name          | Value                    |
+| -------------------- | ------------------------ |
+| `DOCKERHUB_USERNAME` | Your Docker Hub username |
+| `DOCKERHUB_TOKEN`    | Docker Hub Access Token  |
+| `EC2_HOST`           | EC2 Public IP            |
+| `EC2_USER`           | ec2-user / ubuntu        |
+| `EC2_SSH_KEY`        | Your private SSH key     |
