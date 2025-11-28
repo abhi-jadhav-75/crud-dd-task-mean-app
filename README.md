@@ -81,6 +81,7 @@ Restarts the application using docker-compose
 
     
 🖥️ Application Overview
+
 ✔ Frontend
 
 Angular application served using Nginx inside a Docker container.
@@ -105,6 +106,7 @@ A separate Nginx container routes:
 
 Docker Compose orchestrates all containers on an AWS EC2 instance.
 
+
 🚀 CI/CD Using GitHub Actions
 
 Whenever a commit is pushed to main, GitHub Actions:
@@ -121,6 +123,7 @@ Pulls the newest images
 
 Restarts containers with docker-compose
 
+
 🌐 Production Deployment Steps (EC2)
 
 Launch EC2 Instance (Amazon Linux / Ubuntu)
@@ -132,6 +135,7 @@ git clone https://github.com/<username>/crud-dd-task-mean-app
 
 Run:
 docker compose up --build -d
+
 
 🧰 GitHub Secrets Required
 | Secret Name          | Value                    |
